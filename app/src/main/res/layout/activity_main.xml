@@ -31,7 +31,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:background="@android:color/transparent"
-                android:text="Local"
+                android:text="Local Storage"
+                android:drawableRight="@drawable/ic_folder"
+                android:layout_marginEnd="10dp"
                 android:onClick="localMusicList"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>

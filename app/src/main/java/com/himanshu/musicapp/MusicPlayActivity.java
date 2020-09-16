@@ -274,21 +274,7 @@ public class MusicPlayActivity extends AppCompatActivity {
         return timeString;
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.reset();
-        }
-    }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
-        }
-    }
 
     public void downloadSong(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

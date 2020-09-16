@@ -51,7 +51,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(context, MusicPlayActivity.class);
                 intent.putExtra("MUSIC", model);
-                intent.putExtra("type","json");
+                intent.putExtra("type", "json");
                 v.getContext().startActivity(intent);
             }
         });
@@ -70,13 +70,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         if (min < 10) {
             minuteString = "0" + min;
-        } else{
+        } else {
             minuteString = String.valueOf(min);
         }
 
         if (sec < 10) {
             secondString = "0" + sec;
-        } else{
+        } else {
             secondString = String.valueOf(sec);
         }
 
