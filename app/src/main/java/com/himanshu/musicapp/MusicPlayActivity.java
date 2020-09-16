@@ -45,7 +45,7 @@ public class MusicPlayActivity extends AppCompatActivity {
     private String type = "";
     private String localData;
 
-    private static final int PERMISSION_STORAGE_CODE= 1000;
+    private static final int PERMISSION_STORAGE_CODE = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,9 +188,9 @@ public class MusicPlayActivity extends AppCompatActivity {
 
     private void prepareMediaPlayer() {
         try {
-            if(type.equals("json")) {
+            if (type.equals("json")) {
                 mediaPlayer.setDataSource(model.getSource());
-            } else if (type.equals("local")){
+            } else if (type.equals("local")) {
                 mediaPlayer = MediaPlayer.create(this, Uri.parse(localData));
                 playerDuration.setText(milliSecondToTimer(mediaPlayer.getDuration()));
             }
@@ -285,15 +285,15 @@ public class MusicPlayActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        if(mediaPlayer.isPlaying()){
+        if (mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
         }
     }
 
-    public void downloadSong(View view){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+    public void downloadSong(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                    PackageManager.PERMISSION_GRANTED){
+                    PackageManager.PERMISSION_GRANTED) {
                 //Permission Denied, request it
                 String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 //Show popup for runtime permission
@@ -317,12 +317,12 @@ public class MusicPlayActivity extends AppCompatActivity {
         //allow type of network to download files
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
         request.setTitle("Download"); //Set title to notification
-        request.setDescription(model.getTitle()+" Downloading"); //Set description to notification
+        request.setDescription(model.getTitle() + " Downloading"); //Set description to notification
 
         request.allowScanningByMediaScanner();
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         //get song title as file name
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, ""+model.getTitle()+".mp3");
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "" + model.getTitle() + ".mp3");
 
         //get download server and enque file
         DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
@@ -334,13 +334,13 @@ public class MusicPlayActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
-        switch (requestCode){
-            case PERMISSION_STORAGE_CODE:{
-                if(grantResults.length>0  && grantResults[0] ==
-                PackageManager.PERMISSION_GRANTED){
+        switch (requestCode) {
+            case PERMISSION_STORAGE_CODE: {
+                if (grantResults.length > 0 && grantResults[0] ==
+                        PackageManager.PERMISSION_GRANTED) {
                     //Permission granted from popup, perform download
                     startDownloading();
-                } else{
+                } else {
                     //Permission denied from popup, show error message
                     Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
 
